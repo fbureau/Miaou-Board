@@ -94,5 +94,3 @@ def wait_for_internet_connection():
 
 # Run initial python script weather.py when internet connection established
 wait_for_internet_connection()
-
-signal.pause()
