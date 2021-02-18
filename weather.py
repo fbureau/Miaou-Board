@@ -60,11 +60,10 @@ try:
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
-font = ImageFont.truetype(inkyphat.fonts.FredokaOne, 22)
 inkyphat.set_image("resources/backdrop.png")
 datetime = time.strftime("%d/%m %H:%M")
 
-inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
-inkyphat.text((36, 12), temp, inkyphat.WHITE, font=font)
+inkyphat.text((36, 12), datetime, inkyphat.WHITE)
+inkyphat.text((36, 12), temp, inkyphat.WHITE)
 
 inkyphat.show()
