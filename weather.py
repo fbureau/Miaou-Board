@@ -91,6 +91,4 @@ inkyphat.set_image(img)
 inkyphat.show()
 print ("Display updated")
 
-
-signal.signal(signal.SIGINT, exit_gracefully)
 sys.exit()
