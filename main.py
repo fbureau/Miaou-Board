@@ -25,8 +25,8 @@ def flash_led(interval, times, r, g, b):
         buttonshim.set_pixel(0, 0, 0)
         time.sleep(interval)
 
-def buttonflash():
-    flash_led(0.025, 3, 255, 255, 255)
+# def buttonflash():
+#    flash_led(0.025, 3, 255, 255, 255)
 
 def runprocess(file):
     try:
