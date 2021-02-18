@@ -10,7 +10,7 @@ import sys
 from PIL import Image, ImageFont
 import inkyphat
 import time
-import urllib2
+from urllib.request import urlopen
 import textwrap
 
 
@@ -77,7 +77,7 @@ def printtoscreen(title="", content="Error"):
 def wait_for_internet_connection():
     while True:
         try:
-            response = urllib2.urlopen('http://www.google.com',timeout=1)
+            response = urlopen('http://www.google.com',timeout=1).read()
             runprocess("/home/pi/git/Miaou-Board/weather.py")
             return
         except urllib2.URLError:
