@@ -66,7 +66,7 @@ except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
-draw = ImageDraw.Draw(img)
+inkyphat = ImageDraw.Draw(img)
     
 font = ImageFont.truetype(FredokaOne, 22)
 
