@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import yaml
+import os
 import lnetatmo
 from meteocalc import Temp, feels_like
 import requests
