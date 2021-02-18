@@ -81,8 +81,8 @@ datetime = time.strftime("%d/%m %H:%M")
 draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=None)
-draw.text((110, 34), u"{:.2f}°".format(round(t_ext,1)), inkyphat.WHITE, font=None)
-draw.text((36, 58), "Ressentie:", inkyphat.WHITE, font=None)
+draw.text((110, 34), u"{:.1f}°".format(t_ext,1), inkyphat.WHITE, font=None)
+draw.text((36, 48), "Ressentie:", inkyphat.WHITE, font=None)
 
 inkyphat.set_image(img)
 inkyphat.show()
