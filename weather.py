@@ -54,7 +54,7 @@ fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
 # Display datas 
-temp = 'Temperature: ' +str(t_ext) + '{:.2f}°C'
+temp = 'Temperature: ' +  u"{:.2f}°C".format(str(t_ext))
 print(temp)
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
