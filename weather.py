@@ -90,4 +90,4 @@ inkyphat.set_image(img)
 inkyphat.show()
 print ("Display updated")
 
-return sys.exit()
+sys.exit()
