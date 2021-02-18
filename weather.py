@@ -54,6 +54,8 @@ print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
 #Inkyfat
+inkyphat = InkyPHAT('red')
+
 font = ImageFont.truetype(inkyphat.fonts.FredokaOne, 22)
 inkyphat.set_image("resources/backdrop.png")
 datetime = time.strftime("%d/%m %H:%M")
