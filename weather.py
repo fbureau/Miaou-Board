@@ -80,7 +80,7 @@ font = ImageFont.truetype(FredokaOne, 22)
 datetime = time.strftime("%d/%m %H:%M")
 
 draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
-draw.text((72, 34), temp, inkyphat.WHITE, font=font)
+draw.text((72, 34), temp, inkyphat.WHITE, font=None)
 
 
 inkyphat.set_image(img)
