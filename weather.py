@@ -70,8 +70,8 @@ if inkyphat.resolution not in ((212, 104), (250, 122)):
     w, h = inkyphat.resolution
     raise RuntimeError("This example does not support {}x{}".format(w, h))
 
-inky_display.set_border(inky_display.BLACK)
-    
+inkyphat.set_border(inkyphat.BLACK)
+
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
 inkyphat = ImageDraw.Draw(img)
     
