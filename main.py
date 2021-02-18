@@ -41,14 +41,19 @@ def runprocess(file):
 
 def printtoscreen(title="", content="Error"):
     
-    # draw a rectangle of white to clear previous screen if using a loop - as in twitter output
+    # draw a rectangle of white to clear previous screen if using a loop
     inkyphat.rectangle([(0, 0), (212, 104)], fill=inkyphat.WHITE, outline=None)
 
-    if len(content) < 200:
-        fontsize = 10
-        charwidth = 29
-        lineheight = 9
-    else:
+    try:
+        if len(content) < 200:
+            fontsize = 10
+            charwidth = 29
+            lineheight = 9
+        else:
+            fontsize = 6
+            charwidth = 41
+            lineheight = 6
+    except:
         fontsize = 6
         charwidth = 41
         lineheight = 6
