@@ -11,7 +11,7 @@ from PIL import Image, ImageFont
 import inkyphat
 import buttonshim
 
-with open("config.yaml", "r") as ymlfile:
+with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
 # Get geoloc
@@ -46,7 +46,17 @@ fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
 #display datas 
-print('Température extérieur : ' + str(t_ext) + '°C')
+temp = 'Température extérieur : ' +str(t_ext) + '°C'
+print(temp)
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
+
+#Inkyfat
+font = ImageFont.truetype(inkyphat.fonts.FredokaOne, 22)
+inkyphat.set_image("resources/backdrop.png")
+datetime = time.strftime("%d/%m %H:%M")
+
+inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
+inkyphat.text((36, 12), temp, inkyphat.WHITE, font=font)
+
