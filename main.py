@@ -75,7 +75,7 @@ def wait_for_internet_connection():
     while True:
         try:
             response = urllib2.urlopen('http://www.google.com',timeout=1)
-            runprocess("/home/pi/gitMiaou-Board/weather.py")
+            runprocess("/home/pi/git/Miaou-Board/weather.py")
             return
         except urllib2.URLError:
             pass
