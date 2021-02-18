@@ -92,5 +92,5 @@ inkyphat.show()
 print ("Display updated")
 
 
-signal.signal(signal.SIGINT, self.exit_gracefully)
+signal.signal(signal.SIGINT, exit_gracefully)
 sys.exit()
