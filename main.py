@@ -26,7 +26,7 @@ def buttonflash():
 def runprocess(file):
     try:
         # run process
-        process = subprocess.Popen(file, shell=False)
+        process = subprocess.Popen(file, shell=True)
         # flash green led to show its working
         flash_led(0.5, 14, 0, 255, 0)
         # wait for the process to complete
@@ -75,7 +75,7 @@ def wait_for_internet_connection():
     while True:
         try:
             response = urllib2.urlopen('http://www.google.com',timeout=1)
-            runprocess(" /home/pi/git/Miaou-Board/weather.py")
+            runprocess("/home/pi/git/Miaou-Board/weather.py")
             return
         except urllib2.URLError:
             pass
