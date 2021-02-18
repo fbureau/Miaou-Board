@@ -77,7 +77,7 @@ def printtoscreen(title="", content="Error"):
 def wait_for_internet_connection():
     while True:
         try:
-            response = urlopen('http://www.google.com',timeout=1).read()
+            response = urllib.request.urlopen('http://www.google.com',timeout=1).read()
             runprocess("/home/pi/git/Miaou-Board/weather.py")
             return
         except urllib.error.URLError:
