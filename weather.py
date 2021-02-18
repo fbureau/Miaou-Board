@@ -3,6 +3,7 @@
 
 import glob
 import yaml
+import sys
 import os
 import lnetatmo
 from meteocalc import Temp, feels_like
