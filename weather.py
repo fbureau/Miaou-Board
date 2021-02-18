@@ -18,6 +18,9 @@ from inky.auto import auto
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
+# Get the current path
+PATH = os.path.dirname(__file__)
+    
 # Get geoloc
 geolocator = Nominatim(user_agent="pi_dash")
 location = geolocator.geocode(cfg["openweather"]["adresse"])
@@ -49,14 +52,14 @@ h_ext = weatherData.lastData()['Exterieur']['Humidity']
 fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
-#display datas 
+# Display datas 
 temp = 'Température extérieur : ' +str(t_ext) + '°C'
 print(temp)
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
-#Inkyfat
+# Display on Inkyfat
 try:
     inkyphat = auto(ask_user=True, verbose=True)
 except TypeError:
