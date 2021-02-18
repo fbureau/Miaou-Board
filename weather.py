@@ -61,4 +61,4 @@ datetime = time.strftime("%d/%m %H:%M")
 inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
 inkyphat.text((36, 12), temp, inkyphat.WHITE, font=font)
 
-inky_display.show()
+inkyphat.show()
