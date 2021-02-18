@@ -6,12 +6,15 @@ import signal
 import buttonshim
 import inkyphat
 import os
+import sys
 from PIL import Image, ImageFont
 import inkyphat
 import time
 import urllib2
 import textwrap
 
+
+sys.tracebacklimit = None
 
 def flash_led(interval, times, r, g, b):
     for i in range(times):
