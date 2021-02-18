@@ -8,9 +8,10 @@ import requests
 import json
 from geopy.geocoders import Nominatim
 from PIL import Image, ImageFont
-import inkyphat
 import buttonshim
 import time
+import inkyphat
+from inky.auto import auto
 
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
@@ -54,7 +55,10 @@ print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
 #Inkyfat
-inkyphat = InkyPHAT('red')
+try:
+    inkyphat = auto(ask_user=True, verbose=True)
+except TypeError:
+    raise TypeError("You need to update the Inky library to >= v1.1.0")
 
 font = ImageFont.truetype(inkyphat.fonts.FredokaOne, 22)
 inkyphat.set_image("resources/backdrop.png")
