@@ -7,7 +7,8 @@ from meteocalc import Temp, feels_like
 import requests
 import json
 from geopy.geocoders import Nominatim
-from PIL import Image, ImageFont
+from font_fredoka_one import FredokaOne
+from PIL import Image, ImageFont, ImageDraw
 import buttonshim
 import time
 import inkyphat
@@ -60,10 +61,16 @@ try:
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
-inkyphat.set_image("resources/backdrop.png")
+img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inky_display.resolution)
+draw = ImageDraw.Draw(img)
+    
+font = ImageFont.truetype(FredokaOne, 22)
+
 datetime = time.strftime("%d/%m %H:%M")
 
-inkyphat.text((36, 12), datetime, inkyphat.WHITE)
-inkyphat.text((36, 12), temp, inkyphat.WHITE)
+inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
+inkyphat.text((36, 12), temp, inkyphat.WHITE, font=font)
 
+
+inkyphat.set_image(img)
 inkyphat.show()
