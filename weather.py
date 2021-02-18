@@ -4,7 +4,6 @@
 import glob
 import yaml
 import sys
-import signal
 import os
 import lnetatmo
 from meteocalc import Temp, feels_like
@@ -76,16 +75,20 @@ inkyphat.set_border(inkyphat.BLACK)
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
 draw = ImageDraw.Draw(img)
 
-font = ImageFont.truetype(FredokaOne, 18)
+font = ImageFont.truetype(FredokaOne, 12)
+font_sm = ImageFont.truetype(FredokaOne, 6)
+font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
+draw.text((36, 12), datetime, inkyphat.WHITE, font=font_lg)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=None)
 draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inkyphat.WHITE, font=None)
 draw.text((36, 46), "Ressentie:", inkyphat.WHITE, font=None)
 draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=None)
+draw.text((36, 58), "Humidité:", inkyphat.WHITE, font=font)
+draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
 
 inkyphat.set_image(img)
 inkyphat.show()
