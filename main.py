@@ -8,6 +8,7 @@ import inkyphat
 import os
 import sys
 from PIL import Image, ImageFont
+from font_fredoka_one import FredokaOne
 import inkyphat
 import time
 import urllib.request,urllib.parse,urllib.error
