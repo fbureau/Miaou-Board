@@ -88,3 +88,5 @@ draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=None)
 inkyphat.set_image(img)
 inkyphat.show()
 print ("Display updated")
+
+exit()
