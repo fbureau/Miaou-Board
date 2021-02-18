@@ -73,14 +73,14 @@ if inkyphat.resolution not in ((212, 104), (250, 122)):
 inkyphat.set_border(inkyphat.BLACK)
 
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
-inkyphat = ImageDraw.Draw(img)
+draw = ImageDraw.Draw(img)
     
 font = ImageFont.truetype(FredokaOne, 22)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
-inkyphat.text((72, 34), temp, inkyphat.WHITE, font=font)
+draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
+draw.text((72, 34), temp, inkyphat.WHITE, font=font)
 
 
 inkyphat.set_image(img)
