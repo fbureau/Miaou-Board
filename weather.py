@@ -21,7 +21,7 @@ with open("config/config.yaml", "r") as ymlfile:
 
 # Get the current path
 PATH = os.path.dirname(__file__)
-    
+
 # Get geoloc
 geolocator = Nominatim(user_agent="pi_dash")
 location = geolocator.geocode(cfg["openweather"]["adresse"])
@@ -29,8 +29,8 @@ location = geolocator.geocode(cfg["openweather"]["adresse"])
 # Get Wind speed from Openweather
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 complete_url = base_url + "appid=" + cfg["openweather"]["api_key"] + "&units=metricweather&lat="+ str(location.latitude) +"&lon="+ str(location.longitude)
-response = requests.get(complete_url) 
-x = response.json() 
+response = requests.get(complete_url)
+x = response.json()
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
 
@@ -53,7 +53,7 @@ h_ext = weatherData.lastData()['Exterieur']['Humidity']
 fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
-# Display datas 
+# Display datas
 print('Temperature : ' + str(t_ext) + '°C')
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
@@ -73,7 +73,7 @@ inkyphat.set_border(inkyphat.BLACK)
 
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
 draw = ImageDraw.Draw(img)
-    
+
 font = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
@@ -81,8 +81,8 @@ datetime = time.strftime("%d/%m %H:%M")
 draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=None)
-draw.text((120, 34), u"{:.2f}°".format(t_ext), inkyphat.WHITE, font=None)
-
+draw.text((110, 34), u"{:.2f}°".format(round(t_ext,1)), inkyphat.WHITE, font=None)
+draw.text((36, 58), "Ressentie:", inkyphat.WHITE, font=None)
 
 inkyphat.set_image(img)
 inkyphat.show()
