@@ -7,12 +7,13 @@ import buttonshim
 import inkyphat
 import os
 import sys
-from PIL import Image, ImageFont
+from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
 import inkyphat
 import time
 import urllib.request,urllib.parse,urllib.error
 import textwrap
+from inky.auto import auto
 
 
 sys.tracebacklimit = None
