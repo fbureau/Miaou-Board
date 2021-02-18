@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 
 import glob
 import yaml
@@ -54,7 +53,7 @@ fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
 # Display datas 
-temp = 'Température extérieur : ' +str(t_ext) + '°C'
+temp = 'Température : ' +str(t_ext) + '°C'
 print(temp)
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
@@ -80,7 +79,7 @@ font = ImageFont.truetype(FredokaOne, 22)
 datetime = time.strftime("%d/%m %H:%M")
 
 draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
-draw.text((72, 34), temp, inkyphat.WHITE, font=None)
+draw.text((36, 34), temp, inkyphat.WHITE, font=None)
 
 
 inkyphat.set_image(img)
