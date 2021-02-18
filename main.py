@@ -58,8 +58,8 @@ def printtoscreen(title="", content="Error"):
         charwidth = 41
         lineheight = 6
 
-    font = ImageFont.truetype("/home/pi/Pimoroni/inkyphat/fonts/elec.ttf", fontsize)
-    fontmedium = ImageFont.truetype("/home/pi/Pimoroni/inkyphat/fonts/elec.ttf", 10)
+    font = ImageFont.truetype(FredokaOne, fontsize)
+    fontmedium = ImageFont.truetype(FredokaOne, 10)
     inkyphat.set_rotation(180)
     inkyphat.set_border(inkyphat.BLACK)
 
