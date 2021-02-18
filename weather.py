@@ -10,6 +10,7 @@ from geopy.geocoders import Nominatim
 from PIL import Image, ImageFont
 import inkyphat
 import buttonshim
+import datetime
 
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
