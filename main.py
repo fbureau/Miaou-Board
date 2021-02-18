@@ -10,7 +10,7 @@ import sys
 from PIL import Image, ImageFont
 import inkyphat
 import time
-import urlopen
+import urllib.request,urllib.parse,urllib.error
 import textwrap
 
 
