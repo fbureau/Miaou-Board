@@ -4,6 +4,7 @@
 import glob
 import yaml
 import sys
+import signal
 import os
 import lnetatmo
 from meteocalc import Temp, feels_like
@@ -90,4 +91,6 @@ inkyphat.set_image(img)
 inkyphat.show()
 print ("Display updated")
 
+
+signal.signal(signal.SIGINT, self.exit_gracefully)
 sys.exit()
