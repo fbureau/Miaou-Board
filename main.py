@@ -80,7 +80,7 @@ def wait_for_internet_connection():
             response = urlopen('http://www.google.com',timeout=1).read()
             runprocess("/home/pi/git/Miaou-Board/weather.py")
             return
-        except urllib.URLError:
+        except urllib.error.URLError:
             pass
             printtoscreen("Message","Waitng for internet connection")
 
