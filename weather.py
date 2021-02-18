@@ -66,6 +66,12 @@ try:
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
+if inkyphat.resolution not in ((212, 104), (250, 122)):
+    w, h = inkyphat.resolution
+    raise RuntimeError("This example does not support {}x{}".format(w, h))
+
+inky_display.set_border(inky_display.BLACK)
+    
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
 inkyphat = ImageDraw.Draw(img)
     
@@ -74,7 +80,7 @@ font = ImageFont.truetype(FredokaOne, 22)
 datetime = time.strftime("%d/%m %H:%M")
 
 inkyphat.text((36, 12), datetime, inkyphat.WHITE, font=font)
-inkyphat.text((36, 12), temp, inkyphat.WHITE, font=font)
+inkyphat.text((72, 34), temp, inkyphat.WHITE, font=font)
 
 
 inkyphat.set_image(img)
