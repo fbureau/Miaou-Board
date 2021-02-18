@@ -54,8 +54,7 @@ fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
 # Display datas 
-temp = 'Temperature: ' +  u"{:.2f}°C".format(str(t_ext))
-print(temp)
+print('Temperature : ' + str(t_ext) + '°C')
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
@@ -75,12 +74,14 @@ inkyphat.set_border(inkyphat.BLACK)
 img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
 draw = ImageDraw.Draw(img)
     
-font = ImageFont.truetype(FredokaOne, 22)
+font = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
 draw.text((36, 12), datetime, inkyphat.WHITE, font=font)
-draw.text((36, 34), temp, inkyphat.WHITE, font=None)
+
+draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=None)
+draw.text((120, 34), u"{:.2f}°".format(t_ext), inkyphat.WHITE, font=None)
 
 
 inkyphat.set_image(img)
