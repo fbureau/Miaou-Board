@@ -26,7 +26,7 @@ def buttonflash():
 def runprocess(file):
     try:
         # run process
-        process = subprocess.Popen(file, shell=True)
+        process = subprocess.Popen(file, shell=False)
         # flash green led to show its working
         flash_led(0.5, 14, 0, 255, 0)
         # wait for the process to complete
