@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 import glob
 import yaml
@@ -54,7 +54,7 @@ fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
 
 
 # Display datas 
-temp = 'Température : ' +str(t_ext) + '°C'
+temp = 'Temperature: ' +str(t_ext) + '°C'
 print(temp)
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
