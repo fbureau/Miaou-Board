@@ -1,0 +1,11 @@
+netatmo:
+  clientId: 
+  clientSecret: 
+  username: 
+  password: 
+openweather:
+  api_key: 
+  adresse: 
+ratp:
+  type: 
+  line: 
