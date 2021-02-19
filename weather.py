@@ -75,7 +75,15 @@ inkyphat.set_border(inkyphat.BLACK)
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
 draw = ImageDraw.Draw(img)
 
-draw.paste("resources/icons/kitty-flower.png", (100, 70), mask=None)
+#icon_kitten = Image.open("resources/icons/kitty-flower.png")
+#draw_kitten = ImageDraw.Draw(icon_kitten)
+
+icon_kitten = Image.new("P", (inkyphat.WIDTH, inkyphat.HEIGHT))
+icon_kitten = paste_image(icon_kitten, "resources/icons/kitty-flower.png", x=100, y=100)
+
+inkyphat.set_image(icon_kitten)
+
+draw.text(icon_kitten, "test", x=25, y=10)
 
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
