@@ -77,8 +77,8 @@ img = Image.open("resources/backdrop_miaou.png")
 draw = ImageDraw.Draw(img)
 
 icon_kitten = Image.open("resources/icons/kitty-flower.png")
-inkyphat.set_image(icon_kitten)
-# draw = ImageDraw.Draw(icon_kitten)
+# inkyphat.set_image(icon_kitten)
+draw = ImageDraw.Draw(icon_kitten)
 
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
