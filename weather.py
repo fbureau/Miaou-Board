@@ -74,7 +74,7 @@ try:
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
-inky_display.set_border(inky_display.RED)
+inky_display.set_border(inky_display.WHITE)
 
 # Create the palette
 pal_img = Image.new("P", (1, 1))
@@ -128,6 +128,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
+draw.rectangle([(158, 0), (212, 12)], fill=inky_display.WHITE, outline=None)
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
@@ -142,5 +143,3 @@ draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 inky_display.set_image(img)
 inky_display.show()
 print ("Display updated")
-
-sys.exit()
