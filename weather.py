@@ -128,7 +128,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-inky_display.rectangle([(0, 0), (212, 104)], fill=inkyphat.BLACK, outline=None)
+draw.rectangle([(0, 0), (212, 104)], fill=inkyphat.BLACK, outline=None)
 draw.line((0,1, 212,1),1)
 
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
