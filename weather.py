@@ -14,7 +14,6 @@ from font_fredoka_one import FredokaOne
 from PIL import Image, ImageFont, ImageDraw
 import buttonshim
 import time
-import inkyphat
 from inky import InkyPHAT
 from inky.auto import auto
 
