@@ -60,6 +60,14 @@ print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
+# Inkyphat conf
+
+try:
+    inky_display = auto(ask_user=True, verbose=True)
+except TypeError:
+    raise TypeError("You need to update the Inky library to >= v1.1.0")
+
+inky_display.set_border(inky_display.WHITE)
 
 # Inkyphat functions
 
@@ -80,14 +88,7 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
 
     return mask_image
 
-# Display on Inkyfat
-
-try:
-    inky_display = auto(ask_user=True, verbose=True)
-except TypeError:
-    raise TypeError("You need to update the Inky library to >= v1.1.0")
-
-inky_display.set_border(inky_display.WHITE)
+# Display on Inkyphat
 
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
 # img = Image.open("resources/backdrop_miaou.png")
