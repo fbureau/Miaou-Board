@@ -128,6 +128,9 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
+inky_display.rectangle([(0, 0), (212, 104)], fill=inkyphat.BLACK, outline=None)
+draw.line((0,1, 212,1),1)
+
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
@@ -139,7 +142,7 @@ draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
 draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 
-inky_display.set_image(img)
+#inky_display.set_image(img)
 inky_display.show()
 print ("Display updated")
 
