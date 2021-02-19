@@ -125,7 +125,7 @@ draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
 draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
 
 
-img.paste(icons[kitty_icon], (128, 58), masks[kitty_icon])
+img.paste(icons[kitty_icon], (140, 50), masks[kitty_icon])
 
 inkyphat.set_image(img)
 inkyphat.show()
