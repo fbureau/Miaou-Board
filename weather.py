@@ -129,7 +129,7 @@ pal_img = Image.new("P", (1, 1))
 pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
 
 # Process the image using the palette
-img = image.convert("RGB").quantize(palette=pal_img)
+img = Image.convert("RGB").quantize(palette=pal_img)
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
