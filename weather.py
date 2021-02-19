@@ -61,9 +61,9 @@ print('Ressentie : ' + str(round(fl.c,1)) + '°C')
 print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
 
-# Inkyfat functions
+# Inkyphat functions
 
-def create_mask(source, mask=(inkyphat.BLACK, inkyphat.WHITE, inkyphat.RED)):
+def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
     """Create a transparency mask.
     Takes a paletized source image and converts it into a mask
     permitting all the colours supported by Inky pHAT (0, 1, 2)
@@ -83,18 +83,14 @@ def create_mask(source, mask=(inkyphat.BLACK, inkyphat.WHITE, inkyphat.RED)):
 # Display on Inkyfat
 
 try:
-    inkyphat = auto(ask_user=True, verbose=True)
+    inky_display = auto(ask_user=True, verbose=True)
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
-if inkyphat.resolution not in ((212, 104), (250, 122)):
-    w, h = inkyphat.resolution
-    raise RuntimeError("This example does not support {}x{}".format(w, h))
+inky_display.set_border(inky_display.WHITE)
 
-inkyphat.set_border(inkyphat.WHITE)
-
-# img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
-img = Image.open("resources/backdrop_miaou.png")
+img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
+# img = Image.open("resources/backdrop_miaou.png")
 draw = ImageDraw.Draw(img)
 
 icons = {}
@@ -124,17 +120,17 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((154, 10), datetime, inkyphat.BLACK, font=font_sm)
+draw.text((154, 10), datetime, inky_display.BLACK, font=font_sm)
 
-draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=font)
-draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inkyphat.WHITE, font=font)
-draw.text((36, 46), "Ressentie:", inkyphat.WHITE, font=font)
-draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=font)
-draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
-draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
+draw.text((36, 34), "Temperature:", inky_display.WHITE, font=font)
+draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
+draw.text((36, 46), "Ressentie:", inky_display.WHITE, font=font)
+draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
+draw.text((36, 58), "Humidite:", inky_display.WHITE, font=font)
+draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 
-inkyphat.set_image(img)
-inkyphat.show()
+inky_display.set_image(img)
+inky_display.show()
 print ("Display updated")
 
 sys.exit()
