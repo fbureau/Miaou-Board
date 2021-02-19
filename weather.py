@@ -72,7 +72,8 @@ if inkyphat.resolution not in ((212, 104), (250, 122)):
 
 inkyphat.set_border(inkyphat.BLACK)
 
-img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
+# img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
+img = Image.open("resources/backdrop_miaou.png")
 draw = ImageDraw.Draw(img)
 
 icon_kitten = Image.open("resources/icons/kitty-flower.png")
