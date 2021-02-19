@@ -40,11 +40,9 @@ complete_url = base_url + "appid=" + cfg["openweather"]["api_key"] + "&units=met
 response = requests.get(complete_url)
 x = response.json()
 
-print(response.text)
-
 ow_w = x["weather"]
 for ow_w_d in ow_w:
-    ow_icon = ow_w_d["icon"]
+    ow_w_d_icon = ow_w_d["icon"]
 
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
@@ -124,7 +122,7 @@ icon_map = {
 }
 
 for ow_icon in icon_map:
-    if summary in icon_map[icon]:
+    if ow_w_d_icon in icon_map[icon]:
 #        kitty_icon = ow_icon
         break
 
