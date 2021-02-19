@@ -120,7 +120,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 # Process the image using the palette
 
-img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
+img.paste(icons[kitty_icon], (158, 50), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
@@ -128,7 +128,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.rectangle([(158, 0), (212, 12)], fill=inky_display.WHITE, outline=None)
+draw.rectangle([(155, 0), (212, 25)], fill=inky_display.WHITE, outline=None)
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
