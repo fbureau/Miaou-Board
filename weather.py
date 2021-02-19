@@ -101,7 +101,7 @@ draw = ImageDraw.Draw(img)
 icons = {}
 masks = {}
 
-kitty_icon = "flower"
+kitty_icon = "pirate"
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
