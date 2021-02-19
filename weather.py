@@ -74,7 +74,7 @@ try:
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
-inky_display.set_border(inky_display.WHITE)
+inky_display.set_border(inky_display.RED)
 
 # Create the palette
 pal_img = Image.new("P", (1, 1))
@@ -127,9 +127,6 @@ font_sm = ImageFont.truetype(SourceSansPro, 8)
 font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
-
-draw.rectangle([(0, 0), (212, 104)], fill=inky_display.BLACK, outline=None)
-draw.line((0,1, 212,1),1)
 
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 
