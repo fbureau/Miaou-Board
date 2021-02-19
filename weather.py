@@ -124,7 +124,7 @@ datetime = time.strftime("%d/%m %H:%M")
 draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
-draw.line((12,25, 180,25),2)
+draw.line((12,30, 150,30),2)
 draw.text((12, 36), "Temperature:", inky_display.WHITE, font=font)
 draw.text((94, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
 draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
