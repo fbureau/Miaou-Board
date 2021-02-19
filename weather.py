@@ -39,9 +39,9 @@ base_url = "http://api.openweathermap.org/data/2.5/weather?"
 complete_url = base_url + "appid=" + cfg["openweather"]["api_key"] + "&units=metricweather&lat="+ str(location.latitude) +"&lon="+ str(location.longitude)
 response = requests.get(complete_url)
 x = response.json()
+ow_weather_id = x["weather"]["icon"]
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
-ow_weather_id = x["weather"]["icon"]
 
 # Get data from the station
 authorization = lnetatmo.ClientAuth(
@@ -117,10 +117,10 @@ icon_map = {
     "fog": ["50d", "50n"] #fog
 }
 
-for ow_icon in icon_map:
-    if summary in icon_map[icon]:
-        # kitty_icon = ow_icon
-        break
+#for ow_icon in icon_map:
+#    if summary in icon_map[icon]:
+#        kitty_icon = ow_icon
+#        break
 
 kitty_icon = "flower"
 
