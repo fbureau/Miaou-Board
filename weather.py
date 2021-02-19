@@ -83,7 +83,7 @@ kitty_icon = "flower"
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
-    icon_name = icon.split("icon-")[1].replace(".png", "")
+    icon_name = icon.split("kitty-")[1].replace(".png", "")
     icon_image = Image.open(icon)
     icons[icon_name] = icon_image
     masks[icon_name] = inkyphat.create_mask(icon_image)
