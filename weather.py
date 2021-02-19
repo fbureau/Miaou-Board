@@ -124,7 +124,7 @@ img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
-font_lg = ImageFont.truetype(SourceSansPro, 18)
+font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
