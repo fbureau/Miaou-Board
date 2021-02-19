@@ -121,14 +121,16 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((154, 10), datetime, inky_display.BLACK, font=font_sm)
+draw.text((164, 12), datetime, inky_display.BLACK, font=font_sm)
 
-draw.text((36, 34), "Temperature:", inky_display.WHITE, font=font)
-draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
-draw.text((36, 46), "Ressentie:", inky_display.WHITE, font=font)
-draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
-draw.text((36, 58), "Humidite:", inky_display.WHITE, font=font)
-draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
+draw.text((26, 12), "Météo", inky_display.WHITE, font=font_lg)
+
+draw.text((26, 34), "Temperature:", inky_display.WHITE, font=font)
+draw.text((100, 34), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
+draw.text((26, 46), "Ressentie:", inky_display.WHITE, font=font)
+draw.text((90, 46), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
+draw.text((26, 58), "Humidite:", inky_display.WHITE, font=font)
+draw.text((90, 58), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
