@@ -11,6 +11,13 @@ import requests
 import json
 from geopy.geocoders import Nominatim
 from font_fredoka_one import FredokaOne
+from font_amatic_sc import AmaticSC
+from font_caladea import Caladea
+from font_hanken_grotesk import HankenGrotesk
+from font_intuitive import Intuitive
+from font_roboto import Roboto
+from font_source_sans_pro import SourceSansPro
+from font_source_serif_pro import SourceSerifPro
 from PIL import Image, ImageFont, ImageDraw
 import buttonshim
 import time
@@ -115,8 +122,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
-#font = ImageFont.truetype(FredokaOne, 12)
-font = ImageFont(inky_display.fonts.AmaticSC, 12)
+font = ImageFont.truetype(AmaticSC, 12)
 font_sm = ImageFont.truetype(FredokaOne, 8)
 font_lg = ImageFont.truetype(FredokaOne, 18)
 
