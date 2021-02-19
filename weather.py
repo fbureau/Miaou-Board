@@ -76,9 +76,20 @@ inkyphat.set_border(inkyphat.BLACK)
 img = Image.open("resources/backdrop_miaou.png")
 draw = ImageDraw.Draw(img)
 
-icon_kitten = Image.open("resources/icons/kitty-flower.png")
-# inkyphat.set_image(icon_kitten)
-draw = ImageDraw.Draw(icon_kitten)
+icons = {}
+masks = {}
+
+kitty_icon = "flower"
+
+# Load our icon files and generate masks
+for icon in glob.glob("resources/icons/kitty-*.png"):
+    icon_name = icon.split("icon-")[1].replace(".png", "")
+    icon_image = Image.open(icon)
+    icons[icon_name] = icon_image
+    masks[icon_name] = inkyphat.create_mask(icon_image)
+
+inkyphat.paste(icons[kitty_icon], (28, 36), masks[kitty_icon])
+
 
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
