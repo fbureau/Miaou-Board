@@ -128,8 +128,8 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.rectangle([(155, 0), (212, 20)], fill=inky_display.WHITE, outline=None)
-draw.text((164, 9), datetime, inky_display.BLACK, font=font_sm)
+draw.rectangle([(160, 0), (212, 15)], fill=inky_display.WHITE, outline=None)
+draw.text((165, 5), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 140,34),2)
