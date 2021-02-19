@@ -42,7 +42,10 @@ x = response.json()
 
 print(response.text)
 
-ow_weather_id = x["weather"]["icon"]
+ow_w = x["weather"]
+for ow_w_d in ow_w:
+    ow_icon = ow_w_d["icon"]
+
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
 
@@ -120,10 +123,10 @@ icon_map = {
     "fog": ["50d", "50n"] #fog
 }
 
-#for ow_icon in icon_map:
-#    if summary in icon_map[icon]:
+for ow_icon in icon_map:
+    if summary in icon_map[icon]:
 #        kitty_icon = ow_icon
-#        break
+        break
 
 kitty_icon = "flower"
 
