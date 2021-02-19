@@ -115,7 +115,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((130, 12), datetime, inkyphat.WHITE, font=font_sm)
+draw.text((154, 10), datetime, inkyphat.WHITE, font=font_sm)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=font)
 draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inkyphat.WHITE, font=font)
@@ -125,7 +125,7 @@ draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
 draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
 
 
-img.paste(icons[kitty_icon], (154, 48), masks[kitty_icon])
+img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
 inkyphat.set_image(img)
 inkyphat.show()
