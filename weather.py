@@ -124,6 +124,12 @@ draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=font)
 draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
 draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
 
+# Create the palette
+pal_img = Image.new("P", (1, 1))
+pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
+
+# Process the image using the palette
+img = image.convert("RGB").quantize(palette=pal_img)
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
