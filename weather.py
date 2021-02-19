@@ -122,9 +122,9 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
-font = ImageFont.truetype(AmaticSC, 12)
+font = ImageFont.truetype(Caladea, 12)
 font_sm = ImageFont.truetype(FredokaOne, 8)
-font_lg = ImageFont.truetype(FredokaOne, 18)
+font_lg = ImageFont.truetype(HankenGrotesk, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
