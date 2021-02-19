@@ -110,13 +110,13 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
-font = ImageFont.truetype(FredokaOne, 10)
-font_sm = ImageFont.truetype(FredokaOne, 6)
+font = ImageFont.truetype(FredokaOne, 12)
+font_sm = ImageFont.truetype(FredokaOne, 8)
 font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((154, 10), datetime, inkyphat.WHITE, font=font_sm)
+draw.text((154, 10), datetime, inkyphat.BLACK, font=font_sm)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=font)
 draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inkyphat.WHITE, font=font)
