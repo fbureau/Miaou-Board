@@ -123,8 +123,8 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
-font_sm = ImageFont.truetype(Intuitive, 8)
-font_lg = ImageFont.truetype(SourceSerifPro, 18)
+font_sm = ImageFont.truetype(SourceSansPro, 8)
+font_lg = ImageFont.truetype(SourceSansPro, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
@@ -133,11 +133,11 @@ draw.text((162, 11), datetime, inky_display.BLACK, font=font_sm)
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 140,34),2)
 draw.text((12, 36), "Temperature:", inky_display.WHITE, font=font)
-draw.text((94, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
+draw.text((89, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
 draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
-draw.text((78, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
+draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
-draw.text((78, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
+draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
