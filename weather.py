@@ -39,6 +39,9 @@ base_url = "http://api.openweathermap.org/data/2.5/weather?"
 complete_url = base_url + "appid=" + cfg["openweather"]["api_key"] + "&units=metricweather&lat="+ str(location.latitude) +"&lon="+ str(location.longitude)
 response = requests.get(complete_url)
 x = response.json()
+
+print(response.text)
+
 ow_weather_id = x["weather"]["icon"]
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
