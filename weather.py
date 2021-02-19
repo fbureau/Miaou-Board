@@ -78,12 +78,8 @@ draw = ImageDraw.Draw(img)
 #icon_kitten = Image.open("resources/icons/kitty-flower.png")
 #draw_kitten = ImageDraw.Draw(icon_kitten)
 
-icon_kitten = Image.new("P", (inkyphat.WIDTH, inkyphat.HEIGHT))
-icon_kitten = paste_image(icon_kitten, "resources/icons/kitty-flower.png", x=100, y=100)
-
+icon_kitten = Image.open("resources/icons/kitty-flower.png")
 inkyphat.set_image(icon_kitten)
-
-draw.text(icon_kitten, "test", x=25, y=10)
 
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
