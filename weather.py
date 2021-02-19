@@ -101,9 +101,9 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
 
 # Display on Inkyphat
 
-img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
-img = img.convert("RGB").quantize(palette=pal_img)
-draw = ImageDraw.Draw(img)
+#img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
+#img = img.convert("RGB").quantize(palette=pal_img)
+#draw = ImageDraw.Draw(img)
 
 icons = {}
 masks = {}
@@ -142,7 +142,7 @@ draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
 draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
 
-#inky_display.set_image(img)
+inky_display.set_image(img)
 inky_display.show()
 print ("Display updated")
 
