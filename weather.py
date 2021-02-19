@@ -101,9 +101,9 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
 
 # Display on Inkyphat
 
-#img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
-#img = img.convert("RGB").quantize(palette=pal_img)
-#draw = ImageDraw.Draw(img)
+img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
+img = img.convert("RGB").quantize(palette=pal_img)
+draw = ImageDraw.Draw(img)
 
 icons = {}
 masks = {}
