@@ -15,6 +15,7 @@ from PIL import Image, ImageFont, ImageDraw
 import buttonshim
 import time
 import inkyphat
+from inky import InkyPHAT
 from inky.auto import auto
 
 with open("config/config.yaml", "r") as ymlfile:
@@ -83,7 +84,7 @@ def create_mask(source, mask=(inkyphat.WHITE, inkyphat.BLACK, inkyphat.RED)):
 # Display on Inkyfat
 
 try:
-    inkyphat = auto(ask_user=True, verbose=True)
+    inkyphat = InkyPHAT("red")
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
@@ -129,7 +130,7 @@ pal_img = Image.new("P", (1, 1))
 pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
 
 # Process the image using the palette
-img = Image.convert("RGB").quantize(palette=pal_img)
+img = image.convert("RGB").quantize(palette=pal_img)
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
