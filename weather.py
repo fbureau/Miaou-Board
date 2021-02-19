@@ -109,9 +109,6 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
-inkyphat.paste(icons[kitty_icon], (28, 36), masks[kitty_icon])
-
-
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
 font_lg = ImageFont.truetype(FredokaOne, 18)
@@ -126,6 +123,9 @@ draw.text((36, 46), "Ressentie:", inkyphat.WHITE, font=font)
 draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=font)
 draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
 draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
+
+
+img.paste(icons[kitty_icon], (28, 36), masks[kitty_icon])
 
 inkyphat.set_image(img)
 inkyphat.show()
