@@ -64,7 +64,7 @@ print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
 
 # Inkyfat functions
 
-def create_mask(source, mask=(inkyphat.WHITE, inkyphat.BLACK, inkyphat.RED)):
+def create_mask(source, mask=(inkyphat.BLACK, inkyphat.WHITE, inkyphat.RED)):
     """Create a transparency mask.
     Takes a paletized source image and converts it into a mask
     permitting all the colours supported by Inky pHAT (0, 1, 2)
