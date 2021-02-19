@@ -69,6 +69,10 @@ except TypeError:
 
 inky_display.set_border(inky_display.WHITE)
 
+# Create the palette
+pal_img = Image.new("P", (1, 1))
+pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
+
 # Inkyphat functions
 
 def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
@@ -91,7 +95,7 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
 # Display on Inkyphat
 
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
-# img = Image.open("resources/backdrop_miaou.png")
+img = img.convert("RGB").quantize(palette=pal_img)
 draw = ImageDraw.Draw(img)
 
 icons = {}
@@ -103,15 +107,11 @@ kitty_icon = "pirate"
 for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_name = icon.split("kitty-")[1].replace(".png", "")
     icon_image = Image.open(icon)
+    icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
-# Create the palette
-pal_img = Image.new("P", (1, 1))
-pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
-
 # Process the image using the palette
-img = img.convert("RGB").quantize(palette=pal_img)
 
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
