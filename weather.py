@@ -108,7 +108,7 @@ draw = ImageDraw.Draw(img)
 icons = {}
 masks = {}
 
-kitty_icon = "pirate"
+kitty_icon = "flower"
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
@@ -120,7 +120,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 # Process the image using the palette
 
-img.paste(icons[kitty_icon], (160, 48), masks[kitty_icon])
+img.paste(icons[kitty_icon], (160, 45), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
@@ -129,7 +129,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 datetime = time.strftime("%d/%m %H:%M")
 
 draw.rectangle([(160, 0), (212, 15)], fill=inky_display.WHITE, outline=None)
-draw.text((165, 5), datetime, inky_display.BLACK, font=font_sm)
+draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 140,34),2)
