@@ -116,7 +116,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
 #font = ImageFont.truetype(FredokaOne, 12)
-font = ImageFont(fonts.AmaticSC, 12)
+font = ImageFont(inky_display.fonts.AmaticSC, 12)
 font_sm = ImageFont.truetype(FredokaOne, 8)
 font_lg = ImageFont.truetype(FredokaOne, 18)
 
