@@ -72,8 +72,12 @@ if inkyphat.resolution not in ((212, 104), (250, 122)):
 
 inkyphat.set_border(inkyphat.BLACK)
 
-img = Image.open(os.path.join(PATH, "resources/backdrop.png")).resize(inkyphat.resolution)
+img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
 draw = ImageDraw.Draw(img)
+
+masks["kitty"] = inkyphat.create_mask("resources/icons/kitty-flower.png")
+
+inkyphat.paste("resources/icons/kitty-flower.png", (100, 70), masks["kitty"])
 
 font = ImageFont.truetype(FredokaOne, 10)
 font_sm = ImageFont.truetype(FredokaOne, 6)
@@ -81,7 +85,7 @@ font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
-draw.text((36, 12), datetime, inkyphat.WHITE, font=font_lg)
+draw.text((100, 12), datetime, inkyphat.WHITE, font=font_sm)
 
 draw.text((36, 34), "Temperature:", inkyphat.WHITE, font=font)
 draw.text((110, 34), u"{:.1f}°C".format(t_ext,1), inkyphat.WHITE, font=font)
