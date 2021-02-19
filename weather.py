@@ -83,7 +83,7 @@ def create_mask(source, mask=(inkyphat.BLACK, inkyphat.WHITE, inkyphat.RED)):
 # Display on Inkyfat
 
 try:
-    inkyphat = InkyPHAT("red")
+    inkyphat = auto(ask_user=True, verbose=True)
 except TypeError:
     raise TypeError("You need to update the Inky library to >= v1.1.0")
 
@@ -91,7 +91,7 @@ if inkyphat.resolution not in ((212, 104), (250, 122)):
     w, h = inkyphat.resolution
     raise RuntimeError("This example does not support {}x{}".format(w, h))
 
-inkyphat.set_border(inkyphat.BLACK)
+inkyphat.set_border(inkyphat.WHITE)
 
 # img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inkyphat.resolution)
 img = Image.open("resources/backdrop_miaou.png")
@@ -109,6 +109,15 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
+# Create the palette
+pal_img = Image.new("P", (1, 1))
+pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
+
+# Process the image using the palette
+img = img.convert("RGB").quantize(palette=pal_img)
+
+img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
+
 font = ImageFont.truetype(FredokaOne, 12)
 font_sm = ImageFont.truetype(FredokaOne, 8)
 font_lg = ImageFont.truetype(FredokaOne, 18)
@@ -123,15 +132,6 @@ draw.text((36, 46), "Ressentie:", inkyphat.WHITE, font=font)
 draw.text((100, 46), u"{:.1f}°C".format(fl.c,1), inkyphat.WHITE, font=font)
 draw.text((36, 58), "Humidite:", inkyphat.WHITE, font=font)
 draw.text((100, 58), u"{:.1f}%".format(h_ext,0), inkyphat.WHITE, font=font)
-
-# Create the palette
-pal_img = Image.new("P", (1, 1))
-pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
-
-# Process the image using the palette
-img = img.convert("RGB").quantize(palette=pal_img)
-
-img.paste(icons[kitty_icon], (154, 49), masks[kitty_icon])
 
 inkyphat.set_image(img)
 inkyphat.show()
