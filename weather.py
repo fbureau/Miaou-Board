@@ -41,7 +41,7 @@ response = requests.get(complete_url)
 x = response.json()
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
-
+ow_weather_id = x["weather"]["icon"]
 
 # Get data from the station
 authorization = lnetatmo.ClientAuth(
@@ -55,7 +55,6 @@ weatherData = lnetatmo.WeatherStationData(authorization)
 
 t_ext = weatherData.lastData()['Exterieur']['Temperature']
 h_ext = weatherData.lastData()['Exterieur']['Humidity']
-
 
 # Compute Feels like temperature
 fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
@@ -107,6 +106,21 @@ draw = ImageDraw.Draw(img)
 
 icons = {}
 masks = {}
+
+icon_map = {
+    # https://openweathermap.org/weather-conditions
+    "snow": ["13d", "13n"], #snow
+    "rain": ["10d", "10n", "09d", "09n"], #rain
+    "cloud": ["03d", "03n","04d", "04n","02d", "02n"], #clouds
+    "sun": ["01d", "01n"], #clear sky
+    "storm": ["11d", "11n"], #storm
+    "fog": ["50d", "50n"] #fog
+}
+
+for ow_icon in icon_map:
+    if summary in icon_map[icon]:
+        # kitty_icon = ow_icon
+        break
 
 kitty_icon = "flower"
 
