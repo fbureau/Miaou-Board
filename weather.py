@@ -122,7 +122,7 @@ icon_map = {
 }
 
 for ow_icon in icon_map:
-    if ow_w_d_icon in icon_map[icon]:
+    if ow_w_d_icon in icon_map[ow_icon]:
 #        kitty_icon = ow_icon
         break
 
