@@ -121,10 +121,7 @@ icon_map = {
     "fog": ["50d", "50n"] #fog
 }
 
-for ow_icon in icon_map:
-    if ow_w_d_icon in icon_map[ow_icon]:
-        kitty_icon = ow_w_d_icon
-        break
+
 
 try:
     if t_ext >= 28:
@@ -136,7 +133,10 @@ try:
     elif t_ext <= 5 and ow_icon == "rain":
         kitty_icon = "rain"
     else:
-        kitty_icon = ow_w_d_icon
+        for ow_icon in icon_map:
+            if ow_w_d_icon in icon_map[ow_icon]:
+                kitty_icon = ow_w_d_icon
+                break
 except:
     kitty_icon = "erreur"
 
