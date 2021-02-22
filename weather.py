@@ -126,7 +126,7 @@ for ow_icon in icon_map:
 #        kitty_icon = ow_icon
         break
 
-kitty_icon = "flower"
+kitty_icon = "froid"
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
@@ -138,7 +138,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 # Process the image using the palette
 
-img.paste(icons[kitty_icon], (160, 45), masks[kitty_icon])
+img.paste(icons[kitty_icon], (135, 45), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
