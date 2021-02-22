@@ -123,10 +123,23 @@ icon_map = {
 
 for ow_icon in icon_map:
     if ow_w_d_icon in icon_map[ow_icon]:
-#        kitty_icon = ow_icon
+        kitty_icon = ow_icon
         break
 
-kitty_icon = "froid"
+try:
+    if t_ext >= 28:
+        kitty_icon = "hot"
+    elif t_ext <= 5 AND ow_icon != "snow":
+        kitty_icon = "froid"
+    elif t_ext <= 5 AND ow_icon == "snow":
+        kitty_icon = "snow"
+    elif t_ext <= 5 AND ow_icon == "rain":
+        kitty_icon = "rain"
+    else:
+        kitty_icon = ow_icon
+except:
+    kitty_icon = "erreur"
+
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
