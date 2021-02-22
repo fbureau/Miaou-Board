@@ -135,7 +135,7 @@ try:
     else:
         for ow_icon in icon_map:
             if ow_w_d_icon in icon_map[ow_icon]:
-                kitty_icon = ow_w_d_icon
+                kitty_icon = ow_icon
                 break
 except:
     kitty_icon = "erreur"
