@@ -140,6 +140,7 @@ try:
 except:
     kitty_icon = "erreur"
 
+print('Icone : ' + kitty_icon)
 
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
