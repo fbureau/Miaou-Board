@@ -132,7 +132,7 @@ kitty_icon = "froid"
 for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_name = icon.split("kitty-")[1].replace(".png", "")
     icon_image = Image.open(icon)
-    icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
+    icon_image = icon_image.convert("RGBA").quantize(palette=pal_img)
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
