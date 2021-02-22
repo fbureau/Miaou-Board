@@ -18,7 +18,7 @@ from font_intuitive import Intuitive
 from font_roboto import Roboto
 from font_source_sans_pro import SourceSansPro
 from font_source_serif_pro import SourceSerifPro
-from PIL import Image, ImageFont, ImageDraw
+from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 import buttonshim
 import time
 from inky import InkyPHAT
@@ -132,7 +132,8 @@ kitty_icon = "froid"
 for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_name = icon.split("kitty-")[1].replace(".png", "")
     icon_image = Image.open(icon)
-    icon_image = icon_image.convert("RGBA").quantize(palette=pal_img)
+    icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
+    icon_image = ImageEnhance.Sharpness(icon_image)
     icons[icon_name] = icon_image
     masks[icon_name] = create_mask(icon_image)
 
