@@ -138,7 +138,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 # Process the image using the palette
 
-img.paste(icons[kitty_icon], (135, 20), masks[kitty_icon])
+img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
@@ -150,7 +150,7 @@ draw.rectangle([(160, 0), (212, 15)], fill=inky_display.WHITE, outline=None)
 draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Météo", inky_display.WHITE, font=font_lg)
-draw.line((12,34, 140,34),2)
+draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Temperature:", inky_display.WHITE, font=font)
 draw.text((89, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
 draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
