@@ -123,7 +123,7 @@ icon_map = {
 
 for ow_icon in icon_map:
     if ow_w_d_icon in icon_map[ow_icon]:
-        kitty_icon = ow_icon
+        kitty_icon = ow_w_d_icon
         break
 
 try:
@@ -136,7 +136,7 @@ try:
     elif t_ext <= 5 and ow_icon == "rain":
         kitty_icon = "rain"
     else:
-        kitty_icon = ow_icon
+        kitty_icon = ow_w_d_icon
 except:
     kitty_icon = "erreur"
 
@@ -170,6 +170,8 @@ draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
 draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
 draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
+draw.text((12, 72), "Icone:", inky_display.WHITE, font=font)
+draw.text((70, 72), ow_w_d_icon, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
