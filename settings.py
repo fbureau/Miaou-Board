@@ -84,7 +84,7 @@ draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
 draw.text((76, 36), ip_adress, inky_display.WHITE, font=font)
 draw.text((12, 48), "Wifi:", inky_display.WHITE, font=font)
-draw.text((55, 48), networks, inky_display.WHITE, font=font)
+draw.text((45, 48), networks, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
