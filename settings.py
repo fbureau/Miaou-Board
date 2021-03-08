@@ -68,7 +68,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 # Process the image using the palette
 
-img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
+img.paste(icons[kitty_icon], (137, 22))
 
 font = ImageFont.truetype(SourceSerifPro, 12)
 font_sm = ImageFont.truetype(SourceSerifPro, 8)
