@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import socket
 import buttonshim
 import time
@@ -11,6 +12,9 @@ from font_source_serif_pro import SourceSerifPro
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 from inky import InkyPHAT
 from inky.auto import auto
+
+# Get the current path
+PATH = os.path.dirname(__file__)
 
 #  Get address IP
 ip_adress = socket.gethostbyname(socket.gethostname())
