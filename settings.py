@@ -6,6 +6,7 @@ import glob
 import subprocess
 import buttonshim
 import time
+import iw_parse
 from datetime import datetime
 from font_fredoka_one import FredokaOne
 from font_source_sans_pro import SourceSansPro
@@ -21,33 +22,8 @@ PATH = os.path.dirname(__file__)
 ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi strength
-long rssi = WiFi.RSSI();
-rssi=-rssi;
-int WiFiperct;
-if (rssi<27){
-WiFiperct =100;
-}
-else if(rssi>=27&&rssi<33){
-  WiFiperct=150-(5/2.7)*rssi;
-}
-else if(rssi>=33&&rssi<36){
-  WiFiperct=150-(5/3)*rssi;
-}
-else if(rssi>=36&&rssi<40){
-  WiFiperct=150-(5/3.3)*rssi;
-}
-else if(rssi>=40&&rssi<80){
-  WiFiperct=150-(5/3.5)*rssi;
-}
-else if(rssi>=80&&rssi<90){
-  WiFiperct=150-(5/3.4)*rssi;
-}
-else if(rssi>=90&&rssi<99){
-  WiFiperct=150-(5/3.3)*rssi;
-}
-else{
-  WiFiperct=0;
-}
+networks = iw_parse.get_interfaces(interface='wlan0')
+wifi_quality = networks["Quality"]
 
 # Inkyphat conf
 try:
@@ -109,7 +85,7 @@ draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
 draw.text((76, 36), ip_adress, inky_display.WHITE, font=font)
 draw.text((12, 48), "Wifi:", inky_display.WHITE, font=font)
-draw.text((65, 48), WiFiperct, inky_display.WHITE, font=font)
+draw.text((65, 48), wifi_quality, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
