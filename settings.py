@@ -22,7 +22,7 @@ PATH = os.path.dirname(__file__)
 ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi strength
-networks = iw_parse.get_interfaces()
+networks = iw_parse.call_iwlist(interface='wlan0')
 print(networks)
 
 wifi_quality = networks["Quality"]
