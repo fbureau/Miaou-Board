@@ -146,9 +146,9 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
 
 img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
 
-font = ImageFont.truetype(SourceSansPro, 12)
-font_sm = ImageFont.truetype(SourceSansPro, 8)
-font_lg = ImageFont.truetype(SourceSansPro, 18)
+font = ImageFont.truetype(SourceSerifPro, 12)
+font_sm = ImageFont.truetype(SourceSerifPro, 8)
+font_lg = ImageFont.truetype(FredokaOne, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
@@ -162,9 +162,9 @@ draw.text((89, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
 draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
 draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Min/Max:", inky_display.WHITE, font=font)
-draw.text((70, 60), prevision_today_all, inky_display.WHITE, font=font)
+draw.text((65, 60), prevision_today_all, inky_display.WHITE, font=font)
 draw.text((12, 72), "Temps:", inky_display.WHITE, font=font)
-draw.text((70, 72), mf_description, inky_display.WHITE, font=font)
+draw.text((60, 72), mf_description, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
