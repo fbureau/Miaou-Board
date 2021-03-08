@@ -65,7 +65,6 @@ h_ext = weatherData.lastData()['Exterieur']['Humidity']
 fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=mf_wind_speed)
 
 # Inkyphat conf
-
 try:
     inky_display = auto(ask_user=True, verbose=True)
 except TypeError:
@@ -91,7 +90,6 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
     return mask_image
 
 # Display on Inkyphat
-
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
 img = img.convert("RGB").quantize(palette=pal_img)
 draw = ImageDraw.Draw(img)
@@ -134,7 +132,6 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     masks[icon_name] = create_mask(icon_image)
 
 # Process the image using the palette
-
 img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSerifPro, 12)
