@@ -12,13 +12,7 @@ from datetime import datetime
 from meteocalc import Temp, feels_like
 import requests
 import json
-from geopy.geocoders import Nominatim
 from font_fredoka_one import FredokaOne
-from font_amatic_sc import AmaticSC
-from font_caladea import Caladea
-from font_hanken_grotesk import HankenGrotesk
-from font_intuitive import Intuitive
-from font_roboto import Roboto
 from font_source_sans_pro import SourceSansPro
 from font_source_serif_pro import SourceSerifPro
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
@@ -30,28 +24,8 @@ from inky.auto import auto
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
-
-## OpenWeather :    
 # Get the current path
 PATH = os.path.dirname(__file__)
-
-# Get geoloc
-geolocator = Nominatim(user_agent="pi_dash")
-location = geolocator.geocode(cfg["openweather"]["adresse"])
-
-# Get Wind speed from Openweather
-base_url = "http://api.openweathermap.org/data/2.5/weather?"
-complete_url = base_url + "appid=" + cfg["openweather"]["api_key"] + "&units=metricweather&lat="+ str(location.latitude) +"&lon="+ str(location.longitude)
-response = requests.get(complete_url)
-x = response.json()
-
-ow_w = x["weather"]
-for ow_w_d in ow_w:
-    ow_w_d_icon = ow_w_d["icon"]
-
-ow_wind_speed = x["wind"]["speed"]
-ow_feels_like = x["main"]["feels_like"]
-
 
 ## Meteo France :
 client = MeteoFranceClient()
@@ -167,7 +141,7 @@ img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
 
 font = ImageFont.truetype(SourceSansPro, 12)
 font_sm = ImageFont.truetype(SourceSansPro, 8)
-font_lg = ImageFont.truetype(FredokaOne, 18)
+font_lg = ImageFont.truetype(SourceSansPro, 18)
 
 datetime = time.strftime("%d/%m %H:%M")
 
