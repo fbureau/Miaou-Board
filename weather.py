@@ -40,6 +40,13 @@ mf_wind_speed = my_place_daily_forecast["wind"]["speed"]
 mf_description = my_place_daily_forecast["weather"]["desc"]
 mf_icon = my_place_daily_forecast["weather"]["icon"]
 
+prevision_today = my_place_weather_forecast.today_forecast
+
+mf_temp_min = prevision_today["T"]["min"]
+mf_temp_max = prevision_today["T"]["max"]
+
+prevision_today_all = mf_temp_min + " / " + mf_temp_max + "°C"
+
 
 # Get data from the station
 authorization = lnetatmo.ClientAuth(
@@ -154,9 +161,9 @@ draw.text((12, 36), "Temperature:", inky_display.WHITE, font=font)
 draw.text((89, 36), u"{:.1f}°C".format(t_ext,1), inky_display.WHITE, font=font)
 draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
 draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
-draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
-draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
-draw.text((12, 72), "Description:", inky_display.WHITE, font=font)
+draw.text((12, 60), "Min/Max:", inky_display.WHITE, font=font)
+draw.text((70, 60), prevision_today_all, inky_display.WHITE, font=font)
+draw.text((12, 72), "Temps:", inky_display.WHITE, font=font)
 draw.text((70, 72), mf_description, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
