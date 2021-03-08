@@ -23,10 +23,10 @@ ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi strength
 networks = iw_parse.get_interfaces(interface="wlan0")
-print(wifi_quality)
+print(networks)
 
 wifi_quality = networks["Quality"]
-print(networks)
+print(wifi_quality)
 
 # Inkyphat conf
 try:
