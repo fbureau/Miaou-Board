@@ -6,7 +6,7 @@ import glob
 import subprocess
 import buttonshim
 import time
-import iw-parse
+import iw_parse
 from datetime import datetime
 from font_fredoka_one import FredokaOne
 from font_source_sans_pro import SourceSansPro
