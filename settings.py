@@ -21,7 +21,7 @@ PATH = os.path.dirname(__file__)
 ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi name
-networks = subprocess.check_output("iwgetid -r", shell = True)
+networks = subprocess.getoutput('iwgetid -r')
 
 
 # Inkyphat conf
