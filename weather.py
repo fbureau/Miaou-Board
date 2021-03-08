@@ -64,13 +64,6 @@ h_ext = weatherData.lastData()['Exterieur']['Humidity']
 # Compute Feels like temperature
 fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=mf_wind_speed)
 
-
-# Display datas
-print('Temperature : ' + str(t_ext) + '°C')
-print('Tx humidité : ' + str(h_ext) + '%')
-print('Ressentie : ' + str(round(fl.c,1)) + '°C')
-print('Vitesse du vent : ' + str(round(mf_wind_speed,1)) + 'm/s')
-
 # Inkyphat conf
 
 try:
