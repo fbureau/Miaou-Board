@@ -77,6 +77,8 @@ draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 draw.text((12, 11), "Configuration", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
-draw.text((89, 36), ip_adress, inky_display.WHITE, font=font
+draw.text((89, 36), ip_adress, inky_display.WHITE, font=font)
 
-
+inky_display.set_image(img)
+inky_display.show()
+print ("Display updated")
