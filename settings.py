@@ -18,7 +18,7 @@ from inky.auto import auto
 PATH = os.path.dirname(__file__)
 
 #  Get address IP
-ip_adress = subprocess.getoutput('hostname -I')
+ip_adress = subprocess.getoutput('hostname -i')
 
 # Inkyphat conf
 try:
@@ -78,7 +78,7 @@ draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 draw.text((12, 11), "Configuration", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
-draw.text((78, 36), ip_adress, inky_display.WHITE, font=font)
+draw.text((76, 36), ip_adress, inky_display.WHITE, font=font)
 draw.text((12, 48), "Wifi:", inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
