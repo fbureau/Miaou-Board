@@ -45,7 +45,7 @@ prevision_today = my_place_weather_forecast.today_forecast
 mf_temp_min = prevision_today["T"]["min"]
 mf_temp_max = prevision_today["T"]["max"]
 
-prevision_today_all = mf_temp_min + " / " + mf_temp_max + "°C"
+prevision_today_all = str(mf_temp_min) + " / " + str(mf_temp_max) + "°C"
 
 
 # Get data from the station
