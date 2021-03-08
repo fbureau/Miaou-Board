@@ -22,11 +22,9 @@ PATH = os.path.dirname(__file__)
 ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi strength
-networks = iw_parse.call_iwlist(interface='wlan0')
+networks = iw_parse.get_interfaces(interface="wlan0")
 print(networks)
 
-wifi_quality = networks["Quality"]
-print(wifi_quality)
 
 # Inkyphat conf
 try:
