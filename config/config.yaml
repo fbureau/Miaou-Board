@@ -6,6 +6,7 @@ netatmo:
 openweather:
   api_key: 
   adresse: 
+  city: 
 ratp:
   type: 
   line: 
