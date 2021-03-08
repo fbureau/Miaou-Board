@@ -22,7 +22,6 @@ ip_adress = socket.gethostbyname(socket.gethostname())
 
 
 # Inkyphat conf
-
 try:
     inky_display = auto(ask_user=True, verbose=True)
 except TypeError:
@@ -35,7 +34,6 @@ pal_img = Image.new("P", (1, 1))
 pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
 
 # Inkyphat functions
-
 def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
     mask_image = Image.new("1", source.size)
     w, h = source.size
@@ -48,7 +46,6 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
     return mask_image
 
 # Display on Inkyphat
-
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
 img = img.convert("RGB").quantize(palette=pal_img)
 draw = ImageDraw.Draw(img)
@@ -82,7 +79,7 @@ draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 draw.text((12, 11), "Configuration", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
-draw.text((89, 36), ip_adress, inky_display.WHITE, font=font)
+draw.text((80, 36), ip_adress, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
