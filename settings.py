@@ -6,7 +6,6 @@ import glob
 import subprocess
 import buttonshim
 import time
-import iw_parse
 from datetime import datetime
 from font_fredoka_one import FredokaOne
 from font_source_sans_pro import SourceSansPro
@@ -21,9 +20,8 @@ PATH = os.path.dirname(__file__)
 #  Get address IP
 ip_adress = subprocess.getoutput('hostname -i')
 
-# Get Wifi strength
-networks = iw_parse.get_interfaces(interface="wlan0")
-print(networks)
+# Get Wifi name
+networks = subprocess.check_output("iwgetid -r", shell = True)
 
 
 # Inkyphat conf
@@ -86,7 +84,7 @@ draw.line((12,34, 135,34),2)
 draw.text((12, 36), "Adresse IP:", inky_display.WHITE, font=font)
 draw.text((76, 36), ip_adress, inky_display.WHITE, font=font)
 draw.text((12, 48), "Wifi:", inky_display.WHITE, font=font)
-draw.text((65, 48), str(wifi_quality), inky_display.WHITE, font=font)
+draw.text((65, 48), networks, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
