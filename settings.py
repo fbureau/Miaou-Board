@@ -3,7 +3,7 @@
 
 import os
 import glob
-import commands
+import subprocess
 import buttonshim
 import time
 from datetime import datetime
@@ -18,8 +18,7 @@ from inky.auto import auto
 PATH = os.path.dirname(__file__)
 
 #  Get address IP
-ip_adress = commands.getoutput('hostname -I')
-
+ip_adress = subprocess.getoutput('hostname -I')
 
 # Inkyphat conf
 try:
