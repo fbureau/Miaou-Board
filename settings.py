@@ -25,6 +25,9 @@ ip_adress = subprocess.getoutput('hostname -i')
 networks = iw_parse.get_interfaces(interface='wlan0')
 wifi_quality = networks["Quality"]
 
+print(wifi_quality)
+print(networks)
+
 # Inkyphat conf
 try:
     inky_display = auto(ask_user=True, verbose=True)
