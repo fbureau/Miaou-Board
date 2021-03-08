@@ -3,7 +3,7 @@
 
 import os
 import glob
-import socket
+import commands
 import buttonshim
 import time
 from datetime import datetime
@@ -18,7 +18,7 @@ from inky.auto import auto
 PATH = os.path.dirname(__file__)
 
 #  Get address IP
-ip_adress = socket.gethostbyname(socket.gethostname())
+ip_adress = commands.getoutput('hostname -I')
 
 
 # Inkyphat conf
