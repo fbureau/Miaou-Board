@@ -6,6 +6,9 @@ import yaml
 import sys
 import os
 import lnetatmo
+from meteofrance_api import MeteoFranceClient
+from meteofrance_api.model import Place
+from datetime import datetime
 from meteocalc import Temp, feels_like
 import requests
 import json
@@ -27,6 +30,8 @@ from inky.auto import auto
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
+
+## OpenWeather :    
 # Get the current path
 PATH = os.path.dirname(__file__)
 
@@ -47,6 +52,21 @@ for ow_w_d in ow_w:
 ow_wind_speed = x["wind"]["speed"]
 ow_feels_like = x["main"]["feels_like"]
 
+
+## Meteo France :
+client = MeteoFranceClient()
+
+list_places = client.search_places(cfg["openweather"]["city"])
+my_place = list_places[0]
+
+my_place_weather_forecast = client.get_forecast_for_place(my_place)
+my_place_daily_forecast = my_place_weather_forecast.current_forecast
+
+mf_wind_speed = my_place_daily_forecast["wind"]["speed"]
+mf_description = my_place_daily_forecast["weather"]["desc"]
+mf_icon = my_place_daily_forecast["weather"]["icon"]
+
+
 # Get data from the station
 authorization = lnetatmo.ClientAuth(
     clientId = cfg["netatmo"]["clientId"],
@@ -61,14 +81,14 @@ t_ext = weatherData.lastData()['Exterieur']['Temperature']
 h_ext = weatherData.lastData()['Exterieur']['Humidity']
 
 # Compute Feels like temperature
-fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=ow_wind_speed)
+fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=mf_wind_speed)
 
 
 # Display datas
 print('Temperature : ' + str(t_ext) + '°C')
 print('Tx humidité : ' + str(h_ext) + '%')
 print('Ressentie : ' + str(round(fl.c,1)) + '°C')
-print('Vitesse du vent : ' + str(round(ow_wind_speed,1)) + 'm/s')
+print('Vitesse du vent : ' + str(round(mf_wind_speed,1)) + 'm/s')
 
 # Inkyphat conf
 
@@ -86,12 +106,6 @@ pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
 # Inkyphat functions
 
 def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
-    """Create a transparency mask.
-    Takes a paletized source image and converts it into a mask
-    permitting all the colours supported by Inky pHAT (0, 1, 2)
-    or an optional list of allowed colours.
-    :param mask: Optional list of Inky pHAT colours to allow.
-    """
     mask_image = Image.new("1", source.size)
     w, h = source.size
     for x in range(w):
@@ -112,16 +126,13 @@ icons = {}
 masks = {}
 
 icon_map = {
-    # https://openweathermap.org/weather-conditions
-    "snow": ["13d", "13n"], #snow
-    "rain": ["10d", "10n", "09d", "09n"], #rain
-    "cloud": ["03d", "03n","04d", "04n","02d", "02n"], #clouds
-    "sun": ["01d", "01n"], #clear sky
-    "storm": ["11d", "11n"], #storm
-    "fog": ["50d", "50n"] #fog
+    "snow": ["p17j","p17n","p18j","p18n","p21j","p21n","p22j","p22n","p23j","p23n"],
+    "rain": ["p9j","p9n","p10j","p10n","p11j","p11n","p12j","p12n","p13j","p13n","p14j","p14n","p15j","p15n","p19j","p19n","p20j","p20n"],
+    "cloud": ["p2j", "p2n","p3j","p3n","p4j","p4n","p5j","p5n","p6j","p6n","p7j","p7n","p8j","p8n"],
+    "sun": ["p1j","p1n"],
+    "storm": ["p16j","p16n","p24j","p24n","p25j","p25n","p26j","p26n","p27j","p27n","p28j","p28n","p29j","p29n","p30j","p30n"],
+    "fog": ["p31j","p31n","p32j","p32n","p33j","p33n","p34j","p34n"]
 }
-
-
 
 try:
     if t_ext >= 28:
@@ -134,7 +145,7 @@ try:
         kitty_icon = "rain"
     else:
         for ow_icon in icon_map:
-            if ow_w_d_icon in icon_map[ow_icon]:
+            if mf_icon in icon_map[ow_icon]:
                 kitty_icon = ow_icon
                 break
 except:
@@ -171,8 +182,8 @@ draw.text((12, 48), "Ressentie:", inky_display.WHITE, font=font)
 draw.text((70, 48), u"{:.1f}°C".format(fl.c,1), inky_display.WHITE, font=font)
 draw.text((12, 60), "Humidite:", inky_display.WHITE, font=font)
 draw.text((70, 60), u"{:.1f}%".format(h_ext,0), inky_display.WHITE, font=font)
-draw.text((12, 72), "Icone:", inky_display.WHITE, font=font)
-draw.text((70, 72), ow_w_d_icon, inky_display.WHITE, font=font)
+draw.text((12, 72), "Description:", inky_display.WHITE, font=font)
+draw.text((70, 72), mf_description, inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
