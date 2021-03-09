@@ -89,8 +89,8 @@ draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Trafic RATP", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
-draw.text((12, 36), ratp["result"]["line"] + " :", inky_display.WHITE, font=font)
-draw.text((76, 36), ratp["result"]["message"], inky_display.WHITE, font=font)
+draw.text((12, 36), "RER " + ratp["result"]["line"] + " :", inky_display.WHITE, font=font)
+draw.text((46, 36), ratp["result"]["message"], inky_display.WHITE, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
