@@ -6,6 +6,7 @@ import glob
 import requests
 import buttonshim
 import time
+import yaml
 from datetime import datetime
 from font_fredoka_one import FredokaOne
 from font_source_sans_pro import SourceSansPro
