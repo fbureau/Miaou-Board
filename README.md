@@ -4,7 +4,6 @@ Petit projet de dashboard sur une Raspberry PI Zero WH avec les modules Inky pHA
 
 Ce projet utilise les éléments suivant :
 * Station Météo Netatmo ([API](https://dev.netatmo.com/) | [Boutique](https://shop.netatmo.com))
-* OpenWeather API ([Documentation](https://openweathermap.org/api))
 * MeteoCalc ([Documentation](meteocalc))
 
 
