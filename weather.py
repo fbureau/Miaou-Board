@@ -62,7 +62,9 @@ t_ext = weatherData.lastData()['Exterieur']['Temperature']
 h_ext = weatherData.lastData()['Exterieur']['Humidity']
 
 # Compute Feels like temperature
-fl = feels_like(Temp(t_ext, unit='c'), humidity=h_ext, wind_speed=mf_wind_speed)
+
+t1 = Temp(t_ext, unit='c')
+fl = feels_like(temperature=t1, humidity=h_ext, wind_speed=mf_wind_speed)
 
 # Inkyphat conf
 try:
