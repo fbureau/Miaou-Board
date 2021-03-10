@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import common
 import glob
 import yaml
 import sys
@@ -78,19 +79,6 @@ inky_display.set_border(inky_display.WHITE)
 pal_img = Image.new("P", (1, 1))
 pal_img.putpalette((255, 255, 255, 0, 0, 0, 255, 0, 0) + (0, 0, 0) * 252)
 
-# Inkyphat functions
-
-def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
-    mask_image = Image.new("1", source.size)
-    w, h = source.size
-    for x in range(w):
-        for y in range(h):
-            p = source.getpixel((x, y))
-            if p in mask:
-                mask_image.putpixel((x, y), 255)
-
-    return mask_image
-
 # Display on Inkyphat
 img = Image.open(os.path.join(PATH, "resources/backdrop_miaou.png")).resize(inky_display.resolution)
 img = img.convert("RGB").quantize(palette=pal_img)
@@ -134,7 +122,7 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     masks[icon_name] = create_mask(icon_image)
 
 # Process the image using the palette
-img.paste(icons[kitty_icon], (137, 22), masks[kitty_icon])
+img.paste(icons[kitty_icon], (137, 22))
 
 
 print("icon: " + mf_icon)
