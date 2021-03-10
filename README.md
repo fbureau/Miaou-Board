@@ -30,5 +30,5 @@ curl https://get.pimoroni.com/buttonshim | bash
 ### Dépendances python
 
 ```
-pip install pyyaml lnetatmo meteocalc geopy inkyphat buttonshim datetime google-api-python-client
+pip install pyyaml lnetatmo meteocalc geopy inkyphat buttonshim datetime google-api-python-client google-auth-httplib2 google-auth-oauthlib
 ```
