@@ -54,14 +54,12 @@ masks = {}
 
 kitty_icon = "ratp"
 
-
 # Load our icon files and generate masks
 for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_name = icon.split("kitty-")[1].replace(".png", "")
     icon_image = Image.open(icon)
     icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
     icons[icon_name] = icon_image
-    masks[icon_name] = create_mask(icon_image)
 
 # Process the image using the palette
 
