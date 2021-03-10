@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import common
 import os
 import glob
 import subprocess
@@ -14,6 +13,7 @@ from font_source_serif_pro import SourceSerifPro
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 from inky import InkyPHAT
 from inky.auto import auto
+import common
 
 # Get the current path
 PATH = os.path.dirname(__file__)
@@ -23,7 +23,6 @@ ip_adress = subprocess.getoutput('hostname -i')
 
 # Get Wifi name
 networks = subprocess.getoutput('iwgetid -r')
-
 
 # Inkyphat conf
 try:
@@ -53,10 +52,8 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_image = Image.open(icon)
     icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
     icons[icon_name] = icon_image
-    masks[icon_name] = create_mask(icon_image)
 
 # Process the image using the palette
-
 img.paste(icons[kitty_icon], (140, 22))
 
 font = ImageFont.truetype(SourceSerifPro, 12)
