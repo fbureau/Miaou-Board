@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+try:
+    inky_display = auto(ask_user=True, verbose=True)
+except TypeError:
+    raise TypeError("You need to update the Inky library to >= v1.1.0")
+
 # Inkyphat functions - Create a mask
 def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_display.RED)):
     mask_image = Image.new("1", source.size)
