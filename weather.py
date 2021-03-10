@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import common
 import glob
 import yaml
 import sys
@@ -21,6 +20,7 @@ import buttonshim
 import time
 from inky import InkyPHAT
 from inky.auto import auto
+import common
 
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
@@ -119,16 +119,13 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icon_image = Image.open(icon)
     icon_image = icon_image.convert("RGB").quantize(palette=pal_img)
     icons[icon_name] = icon_image
-    masks[icon_name] = create_mask(icon_image)
 
 # Process the image using the palette
 img.paste(icons[kitty_icon], (137, 22))
 
-
 print("icon: " + mf_icon)
 print("image: " + kitty_icon)
 print("Vent: " + str(mf_wind_speed))
-
 
 font = ImageFont.truetype(SourceSerifPro, 12)
 font_sm = ImageFont.truetype(SourceSerifPro, 8)
