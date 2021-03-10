@@ -16,7 +16,6 @@ from inky import InkyPHAT
 from inky.auto import auto
 from common import text_wrap
 
-
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
 
@@ -62,7 +61,6 @@ for icon in glob.glob("resources/icons/kitty-*.png"):
     icons[icon_name] = icon_image
 
 # Process the image using the palette
-
 img.paste(icons[kitty_icon], (140, 22))
 
 font = ImageFont.truetype(SourceSerifPro, 12)
@@ -78,8 +76,8 @@ draw.text((12, 11), "Trafic RATP", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
 
 text = "This could be a single line text but its too long to fit in one."
-lines = text_wrap(ratp_msg, font_sm, 140)
-line_height = font.getsize('hg')[0]
+lines = text_wrap(ratp_msg, font_sm, 130)
+line_height = font_sm.getsize('hg')[0]
 
 y = 36
 for line in lines:
