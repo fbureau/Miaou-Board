@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import common
 import os
 import glob
 import requests
@@ -15,6 +14,8 @@ from font_source_serif_pro import SourceSerifPro
 from PIL import Image, ImageFont, ImageDraw, ImageEnhance
 from inky import InkyPHAT
 from inky.auto import auto
+from common import text_wrap
+
 
 with open("config/config.yaml", "r") as ymlfile:
     cfg = yaml.safe_load(ymlfile)
