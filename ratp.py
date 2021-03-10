@@ -81,8 +81,9 @@ text = "This could be a single line text but its too long to fit in one."
 lines = text_wrap(ratp_msg, font, 100)
 line_height = font.getsize('hg')[1]
 
+y = 36
 for line in lines:
-    draw.text((12, 36), line, inky_display.WHITE, font=font)
+    draw.text((12, y), line, inky_display.WHITE, font=font)
     y = y + line_height
 
 inky_display.set_image(img)
