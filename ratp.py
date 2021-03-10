@@ -29,7 +29,6 @@ ratp = info_ratp.json()
 trafic = ratp.get('result', [])
 
 ratp_msg = "RER " + ratp["result"]["line"] + " : " + ratp["result"]["message"]
-print(ratp_msg)
 
 # Inkyphat conf
 try:
