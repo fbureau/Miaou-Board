@@ -15,7 +15,7 @@ def create_mask(source, mask=(inky_display.BLACK, inky_display.WHITE, inky_displ
   
   
   # Multiline text functions (from : http://vnoted.com/articles/putting-text-on-images-with-python-pil/)
-  def text_wrap(text, font, max_width):
+def text_wrap(text, font, max_width):
     lines = []
     if font.getsize(text)[0] <= max_width:
         lines.append(text) 
