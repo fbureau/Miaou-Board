@@ -26,11 +26,10 @@ PATH = os.path.dirname(__file__)
 url_ratp = "https://api-ratp.pierre-grimaud.fr/v4/traffic/" + cfg["ratp"]["type"] + "/" + cfg["ratp"]["line"]
 info_ratp = requests.get(url_ratp) 
 ratp = info_ratp.json() 
-
 trafic = ratp.get('result', [])
 
-print("RER " + ratp["result"]["line"] + " : " + ratp["result"]["message"])
-
+ratp_msg = "RER " + ratp["result"]["line"] + " : " + ratp["result"]["message"]
+print(ratp_msg)
 
 # Inkyphat conf
 try:
@@ -78,8 +77,14 @@ draw.text((165, 3), datetime, inky_display.BLACK, font=font_sm)
 
 draw.text((12, 11), "Trafic RATP", inky_display.WHITE, font=font_lg)
 draw.line((12,34, 135,34),2)
-draw.text((12, 36), "RER " + ratp["result"]["line"] + " :", inky_display.WHITE, font=font)
-draw.multiline_text((54, 36), ratp["result"]["message"], inky_display.WHITE, font=font)
+
+text = "This could be a single line text but its too long to fit in one."
+lines = text_wrap(ratp_msg, font)
+line_height = font.getsize('hg')[1]
+
+for line in lines:
+    draw.text((12, 36), line, inky_display.WHITE, font=font)
+    y = y + line_height
 
 inky_display.set_image(img)
 inky_display.show()
