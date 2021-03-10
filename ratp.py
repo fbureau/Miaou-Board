@@ -77,7 +77,7 @@ draw.line((12,34, 135,34),2)
 
 text = "This could be a single line text but its too long to fit in one."
 lines = text_wrap(ratp_msg, font_sm, 130)
-line_height = font_sm.getsize('hg')[0]
+line_height = font_sm.getsize('hg')[1]
 
 y = 36
 for line in lines:
