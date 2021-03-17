@@ -10,27 +10,29 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
+def main(argv):
+    # Authenticate and construct service.
+    service, flags = sample_tools.init(
+        argv, 'calendar', 'v3', __doc__, __file__,
+        scope='https://www.googleapis.com/auth/calendar.readonly')
 
-creds = None
-# The file token.json stores the user's access and refresh tokens, and is
-# created automatically when the authorization flow completes for the first
-# time.
-if os.path.exists('token.json'):
-    creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-# If there are no (valid) credentials available, let the user log in.
-if not creds or not creds.valid:
-    if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
-    else:
-        flow = InstalledAppFlow.from_client_secrets_file(
-            'client_secret.json', SCOPES)
-        creds = flow.run_local_server(port=0)
-    # Save the credentials for the next run
-    with open('token.json', 'w') as token:
-        token.write(creds.to_json())
-          
-service = build('calendar', 'v3', credentials=creds)
+    try:
+        page_token = None
+        while True:
+            calendar_list = service.calendarList().list(
+                pageToken=page_token).execute()
+            for calendar_list_entry in calendar_list['items']:
+                print(calendar_list_entry['summary'])
+            page_token = calendar_list.get('nextPageToken')
+            if not page_token:
+                break
+
+    except client.AccessTokenRefreshError:
+        print('The credentials have been revoked or expired, please re-run'
+              'the application to re-authorize.')
+
+if __name__ == '__main__':
+    main(sys.argv)
 
 # Call the Calendar API
 now = datetime.datetime.today().isoformat() + 'Z'
