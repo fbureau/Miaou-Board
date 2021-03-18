@@ -10,11 +10,9 @@ from re import search
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from googleapiclient import sample_tools
-from oauth2client import client
-  
+
 try:
-    scope = 'https://www.googleapis.com/auth/calendar.readonly'
+    scope = "https://www.googleapis.com/auth/calendar.readonly"
     creds = None
     
     if os.path.exists('client_secrets.json'):
