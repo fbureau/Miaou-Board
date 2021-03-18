@@ -18,7 +18,7 @@ try:
     creds = None
     
     if os.path.exists('client_secrets.json'):
-    creds = Credentials.from_authorized_user_file('client_secrets.json', SCOPES)
+      creds = Credentials.from_authorized_user_file('client_secrets.json', SCOPES)
     
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
