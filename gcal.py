@@ -10,13 +10,14 @@ from re import search
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from google.oauth2 import service_account
 
 try:
     scope = "https://www.googleapis.com/auth/calendar.readonly"
     creds = None
     
     if os.path.exists('client_secrets.json'):
-      creds = Credentials.from_authorized_user_file('client_secrets.json', SCOPES)
+      creds = service_account.Credentials.from_authorized_user_file('client_secrets.json', SCOPES)
     
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
