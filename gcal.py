@@ -91,7 +91,7 @@ def main(argv):
                                                 orderBy='startTime').execute()
             events = events_result.get('items', [])
             if not events:
-                draw.text((12, 36), "Rien aujourd'hui !", inky_display.WHITE, font=font_sm)
+                draw.text((12, 36), "Rien aujourd'hui !", inky_display.WHITE, font=font)
             for event in events:
                 start = event['start'].get('dateTime', event['start'].get('date'))
                 start = datetime.datetime.strptime(start, '%Y-%m-%d')
