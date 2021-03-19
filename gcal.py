@@ -105,7 +105,6 @@ def main(argv):
                         print("C'est l'aniversaire de " + event['summary'].replace('Anniversaire ', '') )
                     else:
                         print(start.strftime('%A %d/%m') + " : " + event['summary'])
-            page_token = calendar_list.get('nextPageToken')
             if not page_token:
                 break
 
