@@ -10,6 +10,9 @@ from re import search
 from oauth2client import client
 from googleapiclient import sample_tools
 
+now = datetime.datetime.today().isoformat() + 'Z'
+yesterday = (datetime.datetime.today() - datetime.timedelta(days=1)).isoformat() + 'Z' 
+
 def main(argv):
     # Authenticate and construct service.
     service, flags = sample_tools.init(
@@ -19,6 +22,26 @@ def main(argv):
     try:
         page_token = None
         while True:
+            events_result = service.events().list(calendarId='primary', timeMin=yesterday, timeMax=now,
+                                                maxResults=10, singleEvents=True,
+                                                orderBy='startTime').execute()
+            events = events_result.get('items', [])
+            if not events:
+                print(' ')
+            for event in events:
+                start = event['start'].get('dateTime', event['start'].get('date'))
+                start = datetime.datetime.strptime(start, '%Y-%m-%d')
+
+                if str(start) != str((datetime.datetime.today() - datetime.timedelta(1)).strftime('%Y-%m-%d 00:00:00')):
+                    if search('Poubelle', event['summary']):
+                        print("Il faut sortir la " + str.lower(event['summary']))
+                    elif search('Encombrants', event['summary']):
+                        print("Les encombrants doivent passer demain")
+                    elif search('Anniversaire', event['summary']):
+                        print("C'est l'aniversaire de " + event['summary'].replace('Anniversaire ', '') )
+                    else:
+                        print(start.strftime('%A %d/%m') + " : " + event['summary'])
+                        
             calendar_list = service.calendarList().list(
                 pageToken=page_token).execute()
             for calendar_list_entry in calendar_list['items']:
