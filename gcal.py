@@ -27,7 +27,7 @@ def main(argv):
                                                 orderBy='startTime').execute()
             events = events_result.get('items', [])
             if not events:
-                print(' ')
+                print("Rien aujourd'hui !")
             for event in events:
                 start = event['start'].get('dateTime', event['start'].get('date'))
                 start = datetime.datetime.strptime(start, '%Y-%m-%d')
