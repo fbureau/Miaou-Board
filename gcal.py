@@ -101,7 +101,7 @@ def main(argv):
                 if str(start) != str((datetime.datetime.today() - datetime.timedelta(1)).strftime('%Y-%m-%d 00:00:00')):
                     if search('Poubelle', event['summary']):
                         the_event = "Sortir la " + str.lower(event['summary'])
-                        the_icon = "fa.icons['recycle']"
+                        the_icon = fa.icons['recycle']
                     elif search('Encombrants', event['summary']):
                         the_event = "Les encombrants doivent passer demain"
                     elif search('Anniversaire', event['summary']):
