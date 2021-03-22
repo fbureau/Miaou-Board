@@ -100,7 +100,7 @@ def main(argv):
 
                 if str(start) != str((datetime.datetime.today() - datetime.timedelta(1)).strftime('%Y-%m-%d 00:00:00')):
                     if search('Poubelle', event['summary']):
-                        the_event = str.lower(event['summary'])
+                        the_event = event['summary']
                         the_icon = fa.icons['recycle']
                     elif search('Encombrants', event['summary']):
                         the_event = "Encombrants demain"
@@ -110,7 +110,7 @@ def main(argv):
                         the_event = start.strftime('%A %d/%m') + " : " + event['summary']
                     
                     draw.text((12, y), the_icon, inky_display.WHITE, font=font)
-                    draw.text((20, y), the_event, inky_display.WHITE, font=font)
+                    draw.text((22, y), the_event, inky_display.WHITE, font=font)
             if not page_token:
                 break
 
