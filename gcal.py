@@ -67,7 +67,7 @@ def main(argv):
     font = ImageFont.truetype(SourceSerifPro, 12)
     font_sm = ImageFont.truetype(SourceSerifPro, 8)
     font_lg = ImageFont.truetype(FredokaOne, 18)
-    fontawsome = ImageFont.truetype("fontawesome-regular.ttf", 12)
+    fontawsome = ImageFont.truetype(fontawesome, 12)
 
     current_date = time.strftime("%d/%m %H:%M")
     
