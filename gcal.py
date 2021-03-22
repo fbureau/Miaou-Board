@@ -100,7 +100,8 @@ def main(argv):
 
                 if str(start) != str((datetime.datetime.today() - datetime.timedelta(1)).strftime('%Y-%m-%d 00:00:00')):
                     if search('Poubelle', event['summary']):
-                        the_event = "Il faut sortir la " + str.lower(event['summary'])
+                        the_event = "Sortir la " + str.lower(event['summary'])
+                        the_icon = "fa.icons['recycle']"
                     elif search('Encombrants', event['summary']):
                         the_event = "Les encombrants doivent passer demain"
                     elif search('Anniversaire', event['summary']):
@@ -108,7 +109,8 @@ def main(argv):
                     else:
                         the_event = start.strftime('%A %d/%m') + " : " + event['summary']
                     
-                    draw.text((12, y), the_event, inky_display.WHITE, font=font)
+                    draw.text((12, y), the_icon, inky_display.WHITE, font=font)
+                    draw.text((18, y), the_event, inky_display.WHITE, font=font)
             if not page_token:
                 break
 
