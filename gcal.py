@@ -8,6 +8,7 @@ import requests
 import buttonshim
 import time
 import yaml
+import fontawesome as fa
 from font_fredoka_one import FredokaOne
 from font_source_sans_pro import SourceSansPro
 from font_source_serif_pro import SourceSerifPro
@@ -90,6 +91,7 @@ def main(argv):
                                                 maxResults=10, singleEvents=True,
                                                 orderBy='startTime').execute()
             events = events_result.get('items', [])
+            y = 36
             if not events:
                 draw.text((12, 36), "Rien aujourd'hui !", inky_display.WHITE, font=font)
             for event in events:
@@ -98,13 +100,15 @@ def main(argv):
 
                 if str(start) != str((datetime.datetime.today() - datetime.timedelta(1)).strftime('%Y-%m-%d 00:00:00')):
                     if search('Poubelle', event['summary']):
-                        print("Il faut sortir la " + str.lower(event['summary']))
+                        the_event = "Il faut sortir la " + str.lower(event['summary'])
                     elif search('Encombrants', event['summary']):
-                        print("Les encombrants doivent passer demain")
+                        the_event = "Les encombrants doivent passer demain"
                     elif search('Anniversaire', event['summary']):
-                        print("C'est l'aniversaire de " + event['summary'].replace('Anniversaire ', '') )
+                        the_event = "C'est l'aniversaire de " + event['summary'].replace('Anniversaire ', '')
                     else:
-                        print(start.strftime('%A %d/%m') + " : " + event['summary'])
+                        the_event = start.strftime('%A %d/%m') + " : " + event['summary']
+                    
+                    draw.text((12, y), the_event, inky_display.WHITE, font=font)
             if not page_token:
                 break
 
