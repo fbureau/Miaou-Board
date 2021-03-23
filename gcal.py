@@ -25,6 +25,9 @@ from re import search
 from oauth2client import client
 from googleapiclient import sample_tools
 
+
+print(fa.icons['thumbs-up'])
+
 def main(argv):
     with open("config/config.yaml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
