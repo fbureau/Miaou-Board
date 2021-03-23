@@ -26,9 +26,6 @@ from oauth2client import client
 from googleapiclient import sample_tools
 
 
-print(fa.icons['thumbs-up'])
-print(fa.icons("{thumbs-up} FontAwesome is Awesome {fa-fort-awesome}"))
-
 def main(argv):
     with open("config/config.yaml", "r") as ymlfile:
         cfg = yaml.safe_load(ymlfile)
@@ -71,7 +68,6 @@ def main(argv):
     font = ImageFont.truetype(SourceSerifPro, 12)
     font_sm = ImageFont.truetype(SourceSerifPro, 8)
     font_lg = ImageFont.truetype(FredokaOne, 18)
-    fontawsome = ImageFont.truetype(fa, 12)
 
     current_date = time.strftime("%d/%m %H:%M")
     
@@ -114,7 +110,7 @@ def main(argv):
                     else:
                         the_event = start.strftime('%A %d/%m') + " : " + event['summary']
                     
-                    draw.text((12, y), the_icon, inky_display.WHITE, font=fontawsome)
+                    draw.text((12, y), the_icon, inky_display.WHITE, font=font)
                     draw.text((22, y), the_event, inky_display.WHITE, font=font)
             if not page_token:
                 break
