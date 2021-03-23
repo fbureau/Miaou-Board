@@ -27,7 +27,7 @@ from googleapiclient import sample_tools
 
 
 print(fa.icons['thumbs-up'])
-print(fa.format("{thumbs-up} FontAwesome is Awesome {fa-fort-awesome}"))
+print(fa.icons("{thumbs-up} FontAwesome is Awesome {fa-fort-awesome}"))
 
 def main(argv):
     with open("config/config.yaml", "r") as ymlfile:
